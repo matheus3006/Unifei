@@ -3,7 +3,7 @@ de ordenação Selection Sort para listar todos os dados dos funcionários das s
 formas:
 (a) em ordem decrescente de salário.
 (b) em ordem alfabética.*/
-
+/*Feito com Robson de Arruda Silva*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
