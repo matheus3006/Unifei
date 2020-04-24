@@ -2,6 +2,7 @@
 dados: código, descrição e preço. Use o Insertion Sort para ordenar os produtos por
 ordem alfabética. Em seguida, calcule e mostre quantas comparações devem ser feitas
 para encontrar um produto pelo seu código usando busca sequencial. */
+/*Feito com Robson de Aruda Silva*/
 
 #include <stdio.h>
 #include <stdlib.h>
