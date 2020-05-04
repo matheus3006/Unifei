@@ -35,7 +35,7 @@ int main(){
     printf("Agora voce vai digitar os salarios dos colaboradores. Pense nos colaboradores numerados de 1 a %d.\nMemorize o numero de cada um.\n", tamanho);
     for(int i = 0; i<tamanho; i++){
         printf("Digite o salario do colaborador %d: ", i+1);
-        scanf("%f", &sal[i]);
+        scanf("%f", sal[i]);
     }
 
     salario_novo(sal[tamanho], minimo, tamanho); 
@@ -63,9 +63,9 @@ void salario_novo(float sal[], int minimo, int tamanho){
     
     printf("Estes sao os colaboradores e os novos salarios:\n");
     for(int i=0; i<tamanho; i++){
-
-       printf("Colaborador %d: %f.\n", i+1, novo_salario(minimo, sal[i]));
+        
+        float atual = sal[i];
+        printf("Colaborador %d: %f.\n", i+1, novo_salario(minimo, atual));
        
     }
-   
 }
