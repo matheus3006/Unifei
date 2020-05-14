@@ -1,17 +1,13 @@
-Numero de elementos ordenados: 40
-Método Bubble Sot
-tempo: 54000.00
-comparações: 1521
-movimentações: 453
-
-Numero de elementos ordenados: 40
-Método Selectin Sort
-tempo: 19000.00
-comparações: 780
-movimentações: 605
-
-Numero de elementos ordenados: 40
-Método Insertion Sortn
-tempo: 6000.00
-comparações: 38
-movimentações: 0
+Número de elementos ordenados: 10000
+Metodo Bubble Sort
+   Tempo de execucao: 535.000000
+   Numero de comparacoes: 49995000
+   Numero de movimentacoes: 25100924
+Metodo Selection Sort
+   Tempo de execucao: 219.000000
+   Numero de comparacoes: 49995000
+   Numero de movimentacoes: 9990
+Metodo Insertion
+   Tempo de execucao: 143.000000
+   Numero de comparacoes: 25100924
+   Numero de movimentacoes: 10000

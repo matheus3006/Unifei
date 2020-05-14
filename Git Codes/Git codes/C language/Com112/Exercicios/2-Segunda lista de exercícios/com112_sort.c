@@ -1,122 +1,67 @@
-#include "com112_sort.h"
-#include "com112_file.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
-
-double dados[3];
-clock_t Ticks[2];
+#include "com112_sort.h"
 
 
-double *bubble_sort(int vetor[], int len){
-    double Tempo;
-    int compare = 0;
-    int moviment = 0;
+//Função para o método Selection Sort
+void selectionSort(int *V, int *n_compara, int *n_movimento, int n){
+    int menor;
+    int troca;
 
-    save(vetor,len);
-
-    int position_compare = len-1;
-    int aux = 0;
-
-    Ticks[0] = clock();
-    for (int x = 0; x < position_compare; x++){
-        for (int y = 0; y < position_compare; y++){
-            compare += 1;
-
-            if (vetor[y] > vetor[y+1]){
-                aux = vetor[y];
-                vetor[y] = vetor[y+1];
-                vetor[y+1] = aux;
-
-                moviment +=1;
+    for(int i = 0; i < n-1; i++){
+        menor = i;
+        for(int j = i+1; j < n; j++){
+            if(V[j] < V[menor]){
+                menor = j;
             }
+            //contando a quantidade de comparações de elementos realizadas para a ordenação
+            *n_compara += 1;
+        }
+        if(i != menor){
+            troca = V[i];
+            V[i] = V[menor];
+            V[menor] = troca;
+
+            //contando a quantidade de movimentos realizados pela troca de posição
+            *n_movimento += 1;
         }
     }
-    Ticks[1] = clock();
-    Tempo = (Ticks[1] - Ticks[0]) * 1000.0;
-
-    dados[0] = Tempo;
-    dados[1] = (double)compare;
-    dados[2] = (double)moviment;
-
-    saida(vetor,len,1);
-
-    return dados;
 }
 
-double *selection_sort(int vetor[], int len){
-    double Tempo;
-    int compare = 0;
-    int moviment = 0;
+//Função para o método Bubble Sort
+void bubbleSort(int *V, int *n_compara, int *n_movimento, int n){
+    int aux;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n-1-i; j++){
+            if(V[j] > V[j+1]){
+                aux = V[j];
+                V[j] = V[j+1];
+                V[j+1] = aux;
 
-    save(vetor,len);
-
-    int position_compare = len-1;
-    int aux = 0;
-
-    Ticks[0] = clock();
-    for(int i = 0; i < len-1; i++){       
-        int position_bigger = 0;
-
-        for(int j = 0; j < position_compare; j++){
-            compare +=1;
-            if (vetor[position_bigger] < vetor[j+1]){
-                position_bigger = j+1;
-                moviment +=1;
+                //contando a quantidade de movimentos realizados pela troca de posição
+                *n_movimento += 1;
             }
-            aux = vetor[position_bigger];
+            //contador a quantidade de comparações de elementos para a ordenação
+            *n_compara += 1;
         }
-
-        vetor[position_bigger] = vetor[position_compare];
-        vetor[position_compare] = aux;
-
-        position_compare--;
     }
-    Ticks[1] = clock();
-    Tempo = (Ticks[1] - Ticks[0]) * 1000.0;
-
-    dados[0] = Tempo;
-    dados[1] = (double)compare;
-    dados[2] = (double)moviment;
-
-    saida(vetor,len,1);
-
-    return dados;
 }
 
-double *insertion_sort(int vetor[], int len){
-    double Tempo;
-    int compare = 0;
-    int moviment = 0;
+//Função para o método Inserction Sort
+void insertionSort(int *V, int *n_compara, int *n_movimento, int n){
+    int aux;
+    int j;
+    for(int i = 0; i < n; i++){
+        aux = V[i];
+        for(j = i; (j > 0) && (aux < V[j-1]); j--){
+            V[j] = V[j-1];
 
-    save(vetor,len);
-    int position_compare = len-1;
-    int aux = 0;
-
-    Ticks[0] = clock();
-    for(int j = 1; j <= position_compare; j++ ){  
-
-        for(int k = j; k > 0; k--){
-            compare +=1;
-            if (vetor[k] < vetor[k-1]){
-                aux = vetor[k];
-                vetor[k] = vetor[k-1];
-                vetor[k-1] = aux;
-
-                moviment +=1;
-            }else{
-                break;
-            }
+            //contando a quantidade de comparação de elementos para a ordenação
+            *n_compara += 1;
         }
-    } 
-    Ticks[1] = clock();
-    Tempo = (Ticks[1] - Ticks[0]) * 1000.0;
+        V[j] = aux;
 
-    dados[0] = Tempo;
-    dados[1] = (double)compare;
-    dados[2] = (double)moviment;
-
-    saida(vetor,len,1);
-
-    return dados;
+        //contando a quantidade de movimentos realizados pela troca de posição
+        *n_movimento += 1;
+    }
 }

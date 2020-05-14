@@ -1,8 +1,4 @@
-#ifndef COM112_SORT
-#define COM112_SORT
-
-double *bubble_sort(int vetor[], int len);
-double *selection_sort(int vetor[], int len);
-double *insertion_sort(int vetor[], int len);
-
-#endif
+//Funções dos métodos de ordenação
+void insertionSort(int *V, int *n_compara, int *n_movimento, int n);
+void bubbleSort(int *V, int *n_compara, int *n_movimento, int n);
+void selectionSort(int *V, int *n_compara, int *n_movimento, int n);
