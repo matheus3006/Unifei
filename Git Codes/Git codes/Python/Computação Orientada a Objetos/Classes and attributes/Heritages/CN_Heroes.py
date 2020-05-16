@@ -73,10 +73,10 @@ class Ben10(Heroes):
     #Instance method
     def ChargeOmnitrix(self):
         if(self.IsOmnitrixCharged()):
-            print("The omnitrix is already charged! {} can turn into an alien and save the day!".format(self.getName()))
+            print("The Omnitrix is already charged! {} can turn into an alien and save the day!".format(self.getName()))
         else:
             self.__OmnitrixCharged = True
-            print("""The omnitrix is charging... 
+            print("""The Omnitrix is charging... 
             Charged!! Now {} can turn into an alien and save the day!""".format(self.getName()))
     
     def TurnIntoAnAlienNow(self):
@@ -90,7 +90,7 @@ class Ben10(Heroes):
 class GeneratorRex(Heroes):
     #Builder
     def __init__(self, name, superPower, enemy, available, status, savedTheDay, nanitesAreCharged, MachineBuilded):
-        #Call the superclass builder
+        #Call the superclass's builder
         super().__init__(name, superPower, enemy, available, status, savedTheDay)
         self.__nanitesAreCharged = nanitesAreCharged
         self.__MachineBuilded = MachineBuilded
@@ -114,7 +114,7 @@ class GeneratorRex(Heroes):
         if self.__MachineBuilded == False:
             self.__MachineBuilded = True
             print("""Rex Salazar builded an incredible cannon and a technological sword now!
-And he just used his hands! He can blow up {}! Or just cut him in half...""".format(self.getEnemy()))        
+        And he just used his hands! He can blow up {}! Or just cut him in half...""".format(self.getEnemy()))        
 #-----------------------------------------------------------------------------------------------------------------------#           
 
 #Doing the structions with the first hero
