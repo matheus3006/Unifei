@@ -120,7 +120,7 @@ print("Showing the first pants' upgraded attributes:")
 p.showAttributes()
 print('----------------------------------------------')
 #Doing the instructions with the second pants
-print('There are the second pants and its features:')
+print('There are the second pants and their features:')
 p2 = Pants('Luivton', 'Blue', 'U$1,000.00', '39', False)
 p2.showAttributes()
 print("""----------------------------------------------
