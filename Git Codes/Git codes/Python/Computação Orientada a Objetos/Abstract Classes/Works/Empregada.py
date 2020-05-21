@@ -100,6 +100,7 @@ mensalista = Mensalista('Judite Francisca Lemes', '35998124780', 1000)
 mensalista.imprimeSalarioMensal()
 print()
 
+#Teste automatizado para imprimir qual será mais barato para a república
 if horista.getSalario() < diarista.getSalario():
     if horista.getSalario() < mensalista.getSalario():
         print('A empregada cujo salário é o mais barato é:')
