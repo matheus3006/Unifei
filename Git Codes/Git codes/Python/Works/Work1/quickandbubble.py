@@ -1,6 +1,3 @@
-#Aluno: João Lucas Ribeiro
-#Matrícula: 2019005856
-
 #Função de ordenação em Quick sort
 def partition(array, start, end):
     pivot = array[start]
