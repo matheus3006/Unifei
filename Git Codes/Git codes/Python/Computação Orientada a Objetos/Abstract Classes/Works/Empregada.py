@@ -34,11 +34,6 @@ class Horista(EmpDomestica):
     def getSalario(self):
         salario = self.getHorasTrabalhadas() * self.getValorPorHora()
         return salario
-    
-    def imprimeSalarioMensal(self):
-        print("""Nome: {}.
-Telefone: {}.
-Salário Mensal: {}.""".format(self.getNome(), self.getTelefone(), self.getSalario()))
 
 class Diarista(EmpDomestica):
     #Construtor
@@ -59,11 +54,6 @@ class Diarista(EmpDomestica):
         salario = self.getDiasTrabalhados() * self.getValorPorDia()
         return salario
 
-    def imprimeSalarioMensal(self):
-        print("""Nome: {}.
-Telefone: {}.
-Salário Mensal: {}.""".format(self.getNome(), self.getTelefone(), self.getSalario()))
-
 class Mensalista(EmpDomestica):
     #Construtor
     def __init__(self, nome, telefone, valorMensal):
@@ -77,42 +67,53 @@ class Mensalista(EmpDomestica):
     def getSalario(self):
         return self.getValorMensal()
     
-    def imprimeSalarioMensal(self):
-        print("""Nome: {}.
-Telefone: {}.
-Salário Mensal: {}.""".format(self.getNome(), self.getTelefone(), self.getSalario()))    
-
 #Executando as instruções
 print('Estas são as empregadas disponíveis:\n')
 
 #Printando características da empregada horista  
 horista = Horista('Vania da Silva', '35999876534', 160, 10)
-horista.imprimeSalarioMensal()
+print("""Nome: {}.
+Telefone: {}.
+Salário Mensal: {}.""".format(horista.getNome(), horista.getTelefone(), horista.getSalario()))
 print()
 
 #Printando características da empregada diarista  
 diarista = Diarista('Elizabete Sanchez', '35999976627', 20, 55)
-diarista.imprimeSalarioMensal()
+print("""Nome: {}.
+Telefone: {}.
+Salário Mensal: {}.""".format(diarista.getNome(), diarista.getTelefone(), diarista.getSalario()))
 print()
 
 #Printando características da empregada mensalista  
 mensalista = Mensalista('Judite Francisca Lemes', '35998124780', 1000)
-mensalista.imprimeSalarioMensal()
+print("""Nome: {}.
+Telefone: {}.
+Salário Mensal: {}.""".format(mensalista.getNome(), mensalista.getTelefone(), mensalista.getSalario()))
 print()
 
 #Teste automatizado para imprimir qual será mais barato para a república
 if horista.getSalario() < diarista.getSalario():
     if horista.getSalario() < mensalista.getSalario():
         print('A empregada cujo salário é o mais barato é:')
-        horista.imprimeSalarioMensal()
+        print("""Nome: {}.
+Telefone: {}.
+Salário Mensal: {}.""".format(horista.getNome(), horista.getTelefone(), horista.getSalario()))
+
     else:
         print('A empregada cujo salário é o mais barato é:')
-        mensalista.imprimeSalarioMensal()
+        print("""Nome: {}.
+Telefone: {}.
+Salário Mensal: {}.""".format(mensalista.getNome(), mensalista.getTelefone(), mensalista.getSalario()))
 
 if diarista.getSalario() < horista.getSalario():
     if diarista.getSalario() < mensalista.getSalario():
         print('A empregada cujo salário é o mais barato é:')
-        diarista.imprimeSalarioMensal()
+        print("""Nome: {}.
+Telefone: {}.
+Salário Mensal: {}.""".format(diarista.getNome(), diarista.getTelefone(), diarista.getSalario()))
+
     else:
         print('A empregada cujo salário é o mais barato é:')
-        mensalista.imprimeSalarioMensal() 
+        print("""Nome: {}.
+Telefone: {}.
+Salário Mensal: {}.""".format(mensalista.getNome(), mensalista.getTelefone(), mensalista.getSalario()))
