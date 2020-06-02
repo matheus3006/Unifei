@@ -2,12 +2,11 @@ from abc import ABC, abstractmethod
 
 class Professor(ABC):
     #Construtor
-    def __init__(self, nome, matricula, CargaHoraria, salarioBruto, imposto):
+    def __init__(self, nome, matricula, CargaHoraria, salarioBruto):
         self.__nome = nome
         self.__matricula = matricula
         self.__CargaHoraria = CargaHoraria
         self.__salarioBruto = salarioBruto
-        self.__imposto = imposto
 
     def getNome(self):
         return self.__nome
@@ -43,10 +42,9 @@ class Professor(ABC):
 
 class ProfDE(Professor):
     #Construtor
-    def __init__(self, nome, matricula, CargaHoraria, salarioBruto, SalarioLiquido):
+    def __init__(self, nome, matricula, CargaHoraria, salarioBruto):
         #Construtor da superclasse
-        super().__init__(nome, matricula, CargaHoraria, salarioBruto, imposto)
-        self.__salarioLiquido = SalarioLiquido
+        super().__init__(nome, matricula, CargaHoraria, salarioBruto)
 
     def setSalarioBruto(self, salarioBruto):
         self.__salarioBruto = salarioBruto
@@ -59,26 +57,29 @@ class ProfDE(Professor):
         previd = self.getSalarioBruto() * 0.11
 
         #SalarioLiquido = Salario Bruto - (previdencia + imposto)
-        SalarioLiquido = self.getSalarioBruto() - (previd + calculaValorImposto(self.__salarioBruto))
+        SalarioLiquido = self.getSalarioBruto() - (previd + self.calculaValorImposto(self.__salarioBruto))
+        return SalarioLiquido
 
 class ProfHorista(Professor):
     #Construtor
-    def __init__(self, nome, matricula, CargaHoraria, salarioBruto, imposto, SalarioLiquido):
+    def __init__(self, nome, matricula, CargaHoraria, salarioBruto):
         #Construtor da superclasse
-        super().__init__(nome, matricula, CargaHoraria, salarioBruto, imposto)
+        super().__init__(nome, matricula, CargaHoraria, salarioBruto)
     
     def setSalarioBruto(self, salarioBruto):
         self.__salarioBruto = salarioBruto
     
     def getSalarioBruto(self):
-        return self.__salarioBruto
+        salarioBruto = self.__salarioBruto * self.getCargaHoraria()
+        return salarioBruto
     
     def getSalarioLiquido(self):
-        return self.__salarioBruto * self.getCargaHoraria()
+        SalarioLiquido = self.getSalarioBruto() - self.calculaValorImposto(self.getSalarioBruto())
+        return SalarioLiquido
     
 prof1 = ProfDE('Matheus', 20190999, 64, 5000)
 prof2 = ProfHorista('James', 20190034, 30, 75)
 prof3 = ProfHorista('Janete', 20196437, 36, 80)
 profs =[prof1, prof2, prof3]
 for prof in profs:
-    print('Nome: {} - Salário: {}.'.format(prof.getNome(), prof.getSalario()))
+    print('Nome: {} - Salário: {}.'.format(prof.getNome(), prof.getSalarioLiquido()))
