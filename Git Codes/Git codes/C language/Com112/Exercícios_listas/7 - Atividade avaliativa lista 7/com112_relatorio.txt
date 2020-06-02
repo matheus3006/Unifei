@@ -1,0 +1,26 @@
+Numero de elementos ordenados: 10000
+
+Metodo Bubble Sort
+Tempo de execucao: 780.106000
+Numero de comparacao: 49995000
+Numero de movimentos: 25009188
+
+Selection Sort
+Tempo de execucao: 253.891000
+Numero de comparacao: 49995000
+Numero de movimentos: 9992
+
+Insertion Sort
+Tempo de execucao: 261.189000
+Numero de comparacao: 9999
+Numero de movimentos: 25009188
+
+Merge Sort
+Tempo de execucao: 4.811000
+Numero de comparacao: 120399
+Numero de movimentos: 133631
+
+Quick Sort
+Tempo de execucao: 2.618000
+Numero de comparacao: 233615
+Numero de movimentos: 31484
