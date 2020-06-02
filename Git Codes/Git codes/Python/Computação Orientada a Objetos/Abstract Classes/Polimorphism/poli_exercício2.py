@@ -40,6 +40,10 @@ class Professor(ABC):
     def getSalarioLiquido(self):
         pass
 
+    @abstractmethod
+    def CalculaSalarioLiquido(self):
+        pass
+
 class ProfDE(Professor):
     #Construtor
     def __init__(self, nome, matricula, CargaHoraria, salarioBruto):
@@ -52,7 +56,7 @@ class ProfDE(Professor):
     def getSalarioBruto(self):
         return self.__salarioBruto
     
-    def getSalarioLiquido(self):
+    def CalculaSalarioLiquido(self):
         #Calcular o valor da contribuição previdenciária
         previd = self.getSalarioBruto() * 0.11
 
@@ -65,21 +69,22 @@ class ProfHorista(Professor):
     def __init__(self, nome, matricula, CargaHoraria, salarioBruto):
         #Construtor da superclasse
         super().__init__(nome, matricula, CargaHoraria, salarioBruto)
-    
+
     def setSalarioBruto(self, salarioBruto):
         self.__salarioBruto = salarioBruto
     
     def getSalarioBruto(self):
-        salarioBruto = self.__salarioBruto * self.getCargaHoraria()
-        return salarioBruto
+        return self.__salarioBruto
     
-    def getSalarioLiquido(self):
-        SalarioLiquido = self.getSalarioBruto() - self.calculaValorImposto(self.getSalarioBruto())
+    def CalculaSalarioLiquido(self):
+        SalarioLiquido = (self.getSalarioBruto() * self.__CargaHoraria) - self.calculaValorImposto(self.getSalarioBruto())
         return SalarioLiquido
-    
-prof1 = ProfDE('Matheus', 20190999, 64, 5000)
-prof2 = ProfHorista('James', 20190034, 30, 75)
-prof3 = ProfHorista('Janete', 20196437, 36, 80)
-profs =[prof1, prof2, prof3]
-for prof in profs:
-    print('Nome: {} - Salário: {}.'.format(prof.getNome(), prof.getSalarioLiquido()))
+
+Prof1 = ProfDE('José Ferretto', '12345', 64, 5600)
+Prof2 = ProfHorista('Fernando Jacinto', '67890', 38, 90)
+Prof3 = ProfDE('Antônio Nunes', '101112', 56, 95)
+
+Profs = [Prof1, Prof2, Prof3]
+
+for Prof in Profs:
+    print('Nome: {} - Salário: {}.'.format(Prof.getNome(), Prof.CalculaSalarioLiquido()))
