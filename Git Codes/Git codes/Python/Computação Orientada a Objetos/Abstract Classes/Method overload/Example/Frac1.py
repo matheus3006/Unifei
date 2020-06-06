@@ -53,8 +53,29 @@ class Fracao:
         novonumerador = self.__numerador * outraFrac.getDenominador() + self.__denominador * outraFrac.getNumerador()
         novodenominador = self.__denominador * outraFrac.getDenominador()
         divComum = mdc(novonumerador, novodenominador)
-        return Fracao(novonumerador//divComum, novodenominador//divComum)
-               
+        novaFracao = Fracao(novonumerador//divComum, novodenominador//divComum)
+        if novaFracao.getNumerador() / novaFracao.getDenominador() < 1:
+            return novaFracao
+        if novaFracao.getNumerador() / novaFracao.getDenominador() == 1:
+            novaFracao = 1
+            return novaFracao
+        else:
+            parteInteira = novaFracao.getNumerador() // novaFracao.getDenominador()
+            novonumerador2 = novaFracao.getNumerador() - parteInteira * novaFracao.getDenominador()
+            fracMista = fracaoMista(parteInteira, novonumerador2, novaFracao.getDenominador())
+            return fracMista
+
+class fracaoMista(Fracao):
+    def __init__(self, parteInteira, num, den):
+        super().__init__(num, den)
+        self.__parteInteira = parteInteira
+
+    def getParteInteira(self):
+        return self.__parteInteira
+    
+    def __str__(self):
+        return str(self.__parteInteira) + ' ' + str(self.getNumerador()) + "/" + str(self.getDenominador())
+
     # Exemplo:
     # Para 2/4 + 1/2:
     # novonumerador = (2 * 2) + (4 * 1) = 8
@@ -67,3 +88,6 @@ frac1 = Fracao (1, 3)
 frac2 = Fracao(2, 3)
 frac3 = frac1 + frac2
 print(frac3)
+print()
+frac2 = fracaoMista(1, 5, 6)
+print(frac2)
