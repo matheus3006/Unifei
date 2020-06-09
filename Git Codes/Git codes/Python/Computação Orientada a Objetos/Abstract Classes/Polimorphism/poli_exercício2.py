@@ -37,10 +37,6 @@ class Professor(ABC):
             return self.__salarioBruto * imposto
 
     @abstractmethod
-    def getSalarioLiquido(self):
-        pass
-
-    @abstractmethod
     def CalculaSalarioLiquido(self):
         pass
 
