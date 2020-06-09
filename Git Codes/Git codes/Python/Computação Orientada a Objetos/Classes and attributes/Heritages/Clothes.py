@@ -20,21 +20,21 @@ class Clothes:
     
 class Shoe(Clothes):
     #Builder
-    def __init__(self, brand, color, price, size, flossSilkTied):
+    def __init__(self, brand, color, price, size, ShoeLaceTied):
         #Call the super class's builder
         super().__init__(brand, color, price, size)
-        self.__flossSilkTied = flossSilkTied
+        self.__ShoeLaceTied = ShoeLaceTied
 
-    def isFlossSilkTied(self):
-        return self.__flossSilkTied
+    def isShoeLaceTied(self):
+        return self.__ShoeLaceTied
     
     #Instance method
-    def toTieTheFlossSilk(self):
-        if self.__flossSilkTied == True:
-            print('The floss silk was alreay tied!')
+    def toTieTheShoeLace(self):
+        if self.__ShoeLaceTied == True:
+            print('The shoe lace was alreay tied!')
         else:
-            self.__flossSilkTied = True
-            print('The floss silk is tied now!')
+            self.__ShoeLaceTied = True
+            print('The shoe lace is tied now!')
     
     def showAttributes(self):
         print("""Everything about this shoe:
@@ -43,10 +43,10 @@ class Shoe(Clothes):
         Price: {}.
         Size: {}.
         """.format(self.getBrand(), self.getColor(), self.getPrice(), self.getSize()))
-        if(self.isFlossSilkTied()):
-            print('Its floss silk is tied.')
+        if(self.isShoeLaceTied()):
+            print('Its shoe lace is tied.')
         else:
-            print("Its floss silk isn't tied.")
+            print("Its shoe lace isn't tied.")
 
 class Pants(Clothes):
     #Builder
@@ -85,8 +85,8 @@ print('There is the first shoe and its features:')
 s = Shoe('Lacoste', 'Brown', 'U$150.00', '40', False)
 s.showAttributes()
 print("""----------------------------------------------
-Trying to tie its floss silk:""")
-s.toTieTheFlossSilk()
+Trying to tie its shoe lace:""")
+s.toTieTheShoeLace()
 print('----------------------------------------------')
 print("Showing the first shoe's upgraded attributes:")
 s.showAttributes()
@@ -96,8 +96,8 @@ print('There is the second shoe and its features:')
 s2 = Shoe('Pegada', 'Black', 'U$500.00', '42', True)
 s2.showAttributes()
 print("""----------------------------------------------
-Trying to tie its floss silk:""")
-s2.toTieTheFlossSilk()
+Trying to tie its shoe lace:""")
+s2.toTieTheShoeLace()
 print('----------------------------------------------')
 print("Showing the second shoe's upgraded attributes:")
 s2.showAttributes()
