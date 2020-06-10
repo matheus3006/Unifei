@@ -225,7 +225,7 @@ print("""Acessando histórico do primeiro aluno...
 Encontrado! 
 O aluno 1 se chama {}, tem matrícula número {} e cursa {}."""
 .format(aluno1.getNome(), aluno1.getNroMatric(), aluno1.getCurso().getNome()))
-print('Estas são as disciplinas obrigatórias cursadas por este aluno:')
+print('\nEstas são as disciplinas obrigatórias cursadas por este aluno:')
 for disciplina in histAluno1.getDisciplinasObrigatorias():
     print('{} - Carga horária total: {}'.format(disciplina.getNome(), disciplina.getCargaHoraria()))
 print('\nE estas são as disciplinas eletivas do mesmo:')
@@ -240,7 +240,7 @@ print("""Acessando histórico do segundo aluno...
 Encontrado! 
 O aluno 2 se chama {}, tem matrícula número {} e cursa {}."""
 .format(aluno2.getNome(), aluno2.getNroMatric(), aluno2.getCurso().getNome()))
-print('Estas são as disciplinas obrigatórias cursadas por este aluno')
+print('\nEstas são as disciplinas obrigatórias cursadas por este aluno')
 for disciplina in histAluno2.getDisciplinasObrigatorias():
     print('{} - Carga horária total: {}'.format(disciplina.getNome(), disciplina.getCargaHoraria()))
 print('\nE estas são as disciplinas eletivas do mesmo:')
