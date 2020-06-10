@@ -58,7 +58,7 @@ class Artista:
     def __init__(self, nome):
         self.__nome = nome
 
-        #Isto se denomina uma agregação
+        #O artista possui uma lista de albuns e de musicas
         self.__albuns = []
         self.__musicas = []
 
