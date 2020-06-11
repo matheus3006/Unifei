@@ -250,7 +250,7 @@ aluno3 = Aluno('Rodrigo Duarte Silva Luz', 2020003520, curso1)
 
 #Este aluno acabou de entrar, então, ainda não cursou nenhuma disciplina
 
-#Criando o histórico do primeiro aluno e adicionando as informações
+#Criando o histórico do terceiro aluno e adicionando as informações
 histAluno3 = Historico(aluno3)
 #------------------------------------------------- FIM -----------------------------------------------------------#
 
@@ -264,7 +264,7 @@ for disciplina in grade2.getDisciplina():
 
 #Este aluno não quis cursar disciplinas da grade de outro curso
 
-#Criando o histórico do segundo aluno e adicionando as informações
+#Criando o histórico do quarto aluno e adicionando as informações
 histAluno4 = Historico(aluno4)
 for disciplina in aluno4.getDisciplinasObrigatorias():
     histAluno4.addDisciplinaObrigatoria(disciplina)
