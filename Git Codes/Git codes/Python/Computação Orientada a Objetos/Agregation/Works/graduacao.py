@@ -42,7 +42,7 @@ class Curso:
         self.__nome = nome 
         #Cada curso possui exatamente uma grade
         #Então criei uma lista para se adicionar somente uma grade
-        #Isto se torna uma agregação
+        #Isto se torna uma composição
         self.__grade = []
 
     def getNome(self):
@@ -107,6 +107,8 @@ class Historico:
         #O histórico possui uma lista com as disciplinas cursadas pelo aluno
         self.__disciplinasObrigatorias = []
         self.__disciplinasEletivas = []
+        self.__horasObrigatorias = 0
+        self.__horasEletivas = 0
 
         #Sempre que uma nova disciplina for adicionado ao histórico
         #O aluno receberá esse novo histórico atualizado
@@ -116,15 +118,39 @@ class Historico:
         return self.__aluno
     
     def getDisciplinasObrigatorias(self):
-        return self.__disciplinasObrigatorias
+        if len(self.__disciplinasObrigatorias) == 0:
+            print('\n{} não ainda cursou disciplinas obrigatórias'.format(self.getAluno().getNome()))
+        else:
+            print('\nEstas são as disciplinas obrigatórias cursadas por {}'.format(self.getAluno().getNome()))
+            for disciplina in self.__disciplinasObrigatorias:
+                print('{} - Carga horária: {}'.format(disciplina.getNome(), disciplina.getCargaHoraria()))
     
+    def getHorasObgt(self):
+        if len(self.__disciplinasObrigatorias) == 0:
+            print('{} não possui carga horária cadastrada para disciplinas obrigatórias'.format(self.getAluno().getNome()))
+        else:
+            print('Carga horária total: {}'.format(self.__horasObrigatorias))
+            
     def getDisciplinasEletivas(self):
-        return self.__disciplinasEletivas
+        if len(self.__disciplinasEletivas) == 0:
+            print('\n{} ainda não cursou disciplinas eletivas'.format(self.getAluno().getNome()))
+        else:
+            print('\nEstas são as disciplinas eletivas cursadas por {}:'.format(self.getAluno().getNome()))
+            for disciplina in self.__disciplinasEletivas:
+                print('{} - Carga horária: {}'.format(disciplina.getNome(), disciplina.getCargaHoraria()))
+    
+    def getHorasEltv(self):
+        if len(self.__disciplinasEletivas) == 0:
+            print('{} não possui carga horária cadastrada para disciplinas eletivas'.format(self.getAluno().getNome()))
+        else:
+            print('Carga horária total: {}'.format(self.__horasEletivas))
     
     def addDisciplinaObrigatoria(self, disciplina):
+        self.__horasObrigatorias += disciplina.getCargaHoraria()
         self.__disciplinasObrigatorias.append(disciplina)
     
     def addDisciplinaEletiva(self, disciplina):
+        self.__horasEletivas += disciplina.getCargaHoraria()
         self.__disciplinasEletivas.append(disciplina)
     
 
@@ -198,7 +224,7 @@ for disciplina in aluno1.getDisciplinasEletivas():
 #------------------------------------------------- FIM -----------------------------------------------------------#
 
 #-------------------------------------------- SEGUNDO ALUNO ------------------------------------------------------#
-#Criando o seugundo aluno, que cursa o segundo curso de teste
+#Criando o segundo aluno, que cursa o segundo curso de teste
 aluno2 = Aluno('Robson de Arruda Silva Souza', 2019013624, curso2)
 
 #Adicionando as disciplinas do curso 2 à lista de disciplinas do aluno
@@ -216,34 +242,116 @@ for disciplina in aluno2.getDisciplinasObrigatorias():
 
 for disciplina in aluno2.getDisciplinasEletivas():
     histAluno2.addDisciplinaEletiva(disciplina)
-#------------------------------------------------- FIM ------------------------------------------------------------------#
+#------------------------------------------------- FIM -----------------------------------------------------------#
 
-#--------------------------------- PROCESSANDO AS INFORMAÇÕES E PRINTANDO -----------------------------------------------#
+#-------------------------------------------- TERCEIRO ALUNO -----------------------------------------------------#
+#Criando o terceiro aluno, que cursa o primeiro curso de teste
+aluno3 = Aluno('Rodrigo Duarte Silva Luz', 2020003520, curso1)
+
+#Este aluno acabou de entrar, então, ainda não cursou nenhuma disciplina
+
+#Criando o histórico do primeiro aluno e adicionando as informações
+histAluno3 = Historico(aluno3)
+#------------------------------------------------- FIM -----------------------------------------------------------#
+
+#-------------------------------------------- QUARTO ALUNO -------------------------------------------------------#
+#Criando o quarto aluno, que cursa o segundo curso de teste
+aluno4 = Aluno('Matheus de Souza Silva', 2019005909, curso2)
+
+#Adicionando as disciplinas do curso 2 à lista de disciplinas do aluno
+for disciplina in grade2.getDisciplina():
+    aluno4.addDisciplinaObrigatoria(disciplina)
+
+#Este aluno não quis cursar disciplinas da grade de outro curso
+
+#Criando o histórico do segundo aluno e adicionando as informações
+histAluno4 = Historico(aluno4)
+for disciplina in aluno4.getDisciplinasObrigatorias():
+    histAluno4.addDisciplinaObrigatoria(disciplina)
+#------------------------------------------------- FIM ----------------------------------------------------------#
+
+#-------------------------------------------- QUINTO ALUNO ------------------------------------------------------#
+#Criando o quinto aluno, que cursa o segundo curso de teste
+aluno5 = Aluno('Carlos Henrique Souza Silva', 2019015979, curso2)
+
+#Adicionando as disciplinas do curso 2 à lista de disciplinas do aluno
+for disciplina in grade2.getDisciplina():
+    aluno5.addDisciplinaObrigatoria(disciplina)
+
+#Adicionando disciplinas do curso 1 ao quinto aluno
+aluno5.addDisciplinaEletiva(Disc4)
+aluno5.addDisciplinaEletiva(Disc3)
+aluno5.addDisciplinaEletiva(Disc1)
+
+#Criando o histórico do quinto aluno e adicionando as informações
+histAluno5 = Historico(aluno5)
+for disciplina in aluno5.getDisciplinasObrigatorias():
+    histAluno5.addDisciplinaObrigatoria(disciplina)
+
+for disciplina in aluno5.getDisciplinasEletivas():
+    histAluno5.addDisciplinaEletiva(disciplina)
+#------------------------------------------------- FIM ----------------------------------------------------------#
+
+
+#--------------------------------- PROCESSANDO AS INFORMAÇÕES E PRINTANDO ----------------------------------------#
 #Processando  o histórico e exibindo as disciplinas obrigatórias e eletivas do primeiro aluno
-#Juntamente com a carga horária total de cada uma
-print("""Acessando histórico do primeiro aluno...
-Encontrado! 
-O aluno 1 se chama {}, tem matrícula número {} e cursa {}."""
-.format(aluno1.getNome(), aluno1.getNroMatric(), aluno1.getCurso().getNome()))
-print('\nEstas são as disciplinas obrigatórias cursadas por este aluno:')
-for disciplina in histAluno1.getDisciplinasObrigatorias():
-    print('{} - Carga horária total: {}'.format(disciplina.getNome(), disciplina.getCargaHoraria()))
-print('\nE estas são as disciplinas eletivas do mesmo:')
-for disciplina in histAluno1.getDisciplinasEletivas():
-    print('{} - Carga horária total: {}'.format(disciplina.getNome(), disciplina.getCargaHoraria()))
+#Juntamente com a carga horária total
+print("""Acessando histórico dos alunos... Encontrado!\n 
+Aluno: {}
+Matrícula: {} 
+Curso: {}""".format(aluno1.getNome(), aluno1.getNroMatric(), aluno1.getCurso().getNome()))
+histAluno1.getDisciplinasObrigatorias()
+histAluno1.getHorasObgt()
+histAluno1.getDisciplinasEletivas()
+histAluno1.getHorasEltv()
 
-print()
+print('-----------------------------------------------------------------------------------------------------------')
 
 #Processando o histórico e exibindo as disciplinas obrigatórias e eletivas do segundo aluno
-#Juntamente com a carga horária total de cada uma
-print("""Acessando histórico do segundo aluno...
-Encontrado! 
-O aluno 2 se chama {}, tem matrícula número {} e cursa {}."""
-.format(aluno2.getNome(), aluno2.getNroMatric(), aluno2.getCurso().getNome()))
-print('\nEstas são as disciplinas obrigatórias cursadas por este aluno')
-for disciplina in histAluno2.getDisciplinasObrigatorias():
-    print('{} - Carga horária total: {}'.format(disciplina.getNome(), disciplina.getCargaHoraria()))
-print('\nE estas são as disciplinas eletivas do mesmo:')
-for disciplina in histAluno2.getDisciplinasEletivas():
-    print('{} - Carga horária total: {}'.format(disciplina.getNome(), disciplina.getCargaHoraria()))
-#------------------------------------------------- FIM ------------------------------------------------------------------#
+#Juntamente com a carga horária total
+print("""Aluno: {}
+Matrícula: {} 
+Curso: {}""".format(aluno2.getNome(), aluno2.getNroMatric(), aluno2.getCurso().getNome()))
+histAluno2.getDisciplinasObrigatorias()
+histAluno2.getHorasObgt()
+histAluno2.getDisciplinasEletivas()
+histAluno2.getHorasEltv()
+
+print('-----------------------------------------------------------------------------------------------------------')
+
+#Processando o histórico e exibindo as disciplinas obrigatórias e eletivas do terceiro aluno
+#Juntamente com a carga horária total
+print("""Aluno: {}
+Matrícula: {} 
+Curso: {}""".format(aluno3.getNome(), aluno3.getNroMatric(), aluno3.getCurso().getNome()))
+histAluno3.getDisciplinasObrigatorias()
+histAluno3.getHorasObgt()
+histAluno3.getDisciplinasEletivas()
+histAluno3.getHorasEltv()
+
+print('-----------------------------------------------------------------------------------------------------------')
+
+#Processando o histórico e exibindo as disciplinas obrigatórias e eletivas do quarto aluno
+#Juntamente com a carga horária total
+print("""Aluno: {}
+Matrícula: {} 
+Curso: {}""".format(aluno4.getNome(), aluno4.getNroMatric(), aluno4.getCurso().getNome()))
+histAluno4.getDisciplinasObrigatorias()
+histAluno4.getHorasObgt()
+histAluno4.getDisciplinasEletivas()
+histAluno4.getHorasEltv()
+
+print('-----------------------------------------------------------------------------------------------------------')
+
+#Processando o histórico e exibindo as disciplinas obrigatórias e eletivas do quinto aluno
+#Juntamente com a carga horária total
+print("""Aluno: {}
+Matrícula: {} 
+Curso: {}""".format(aluno5.getNome(), aluno5.getNroMatric(), aluno5.getCurso().getNome()))
+histAluno5.getDisciplinasObrigatorias()
+histAluno5.getHorasObgt()
+histAluno5.getDisciplinasEletivas()
+histAluno5.getHorasEltv()
+
+print('-----------------------------------------------------------------------------------------------------------')
+#------------------------------------------------- FIM ------------------------------------------------------- ---#
