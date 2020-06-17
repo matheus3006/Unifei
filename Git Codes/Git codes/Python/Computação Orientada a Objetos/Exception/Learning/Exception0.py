@@ -1,3 +1,6 @@
+#Sempre que vamos criar uma exception nossa
+#Customizada, no caso, temos que criar uma classe
+#E dizer que ela é subclasse da classe exception
 class ValorMenor(Exception):
     #Gerada quando o valor é menor
     pass
@@ -14,6 +17,7 @@ while True:
     try:
         i_num = int(input("Tente acertar o número misterioso.\nDigite um número: "))
         if i_num < nro:
+            #Raise chama a exception criada
             raise ValorMenor
         elif i_num > nro:
             raise ValorMaior
