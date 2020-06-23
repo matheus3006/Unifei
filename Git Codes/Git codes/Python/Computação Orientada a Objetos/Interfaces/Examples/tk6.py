@@ -4,6 +4,7 @@ import tkinter as tk
 class GUI:
    def __init__(self):
       self.janela = tk.Tk()
+      self.janela.title('Formulário')
       self.frame1 = tk.Frame(self.janela)
       self.frame2 = tk.Frame(self.janela)
       self.frame1.pack()
@@ -26,7 +27,7 @@ class GUI:
       self.inputText = tk.Entry(self.frame1, width=20)
       self.inputText.pack(side="left")
       
-      self.janela.mainloop()
+      tk.mainloop()
    
    # Criando as funções de callback
    def submit(self):

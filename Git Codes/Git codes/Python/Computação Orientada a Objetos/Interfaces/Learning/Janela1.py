@@ -6,7 +6,7 @@ class Qualquer:
 
         self.janela = tk.Tk()
         self.janela.title('Nomeei a janela')
-        self.janela.rotulo = tk.Label(self.janela, text = "Rotulei a janela")
+        self.janela.rotulo = tk.Label(self.janela, text = "Rotulei a janela", font = ('Arial Black', 20))
         self.janela.rotulo.pack()
         self.janela.mainloop()
 
