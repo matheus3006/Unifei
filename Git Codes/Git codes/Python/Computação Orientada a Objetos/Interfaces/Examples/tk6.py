@@ -13,11 +13,6 @@ class GUI:
       self.labelResult = tk.Label(self.frame2,text="Nada")
       self.labelInfo.pack(side="left")
       self.labelResult.pack(side="left")
-   
-      self.labelInfo = tk.Label(self.frame1,text="Digite algo:")
-      self.labelResult = tk.Label(self.frame2,text="Nada")
-      self.labelInfo.pack(side="left")
-      self.labelResult.pack(side="left")
       
       self.buttonSubmit = tk.Button(self.janela,text="Enter", \
                                     command=self.submit)      
