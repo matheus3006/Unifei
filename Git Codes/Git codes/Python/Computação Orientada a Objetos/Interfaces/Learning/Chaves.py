@@ -5,7 +5,7 @@ class Janela:
 
     def __init__(self):
         self.janela = tk.Tk()
-        self.janela.title('Checklist')
+        self.janela.title('Questão sobre o seriado Chaves')
 
         self.frame1 = tk.Frame(self.janela)
         self.frame2 = tk.Frame(self.janela)
@@ -37,6 +37,8 @@ class Janela:
 
         self.botaoEnviar = tk.Button(self.frameFinal, text = 'Enviar', font = ('Arial black', 10), command = self.Enviar)
         self.botaoEnviar.pack(side = 'left')
+        self.botaoLimpar = tk.Button(self.frameFinal, text = 'Limpar', font = ('Arial black', 10), command = self.Limpar)
+        self.botaoLimpar.pack(side = 'left')
         self.botaoSair = tk.Button(self.frameFinal, text = 'Sair', font = ('Arial black', 10), command = self.janela.destroy)
         self.botaoSair.pack(side = 'left')
 
@@ -50,11 +52,17 @@ class Janela:
         self.correção = 'Sua resposta está '
 
         if self.cbv2.get() == 1:
-            self.correção = self.correção + ' correta!\nProvavelmente você é um fã deste seriado...'
+            self.correção = self.correção + 'correta!\nProvavelmente você é um fã deste seriado...'
             messagebox.showinfo('Gabarito', self.correção)
         else:
-            self.correção = self.correção + ' errada!\nProvavelmente você não assistiu ao seriado...\n' + 'Resposta correta: alternativa (b)'
-            messagebox.showinfo('Gabarito', self.correção)        
+            self.correção = self.correção + 'errada!\nProvavelmente você não assistiu ao seriado...\n' + 'Resposta correta: alternativa (b)'
+            messagebox.showinfo('Gabarito', self.correção)
+
+    def Limpar(self):
+        self.cbv1.set(0)
+        self.cbv2.set(0)
+        self.cbv3.set(0)
+        self.cbv4.set(0)
 
 def ChamaJanela():
     Janela()
