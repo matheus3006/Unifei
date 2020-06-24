@@ -29,7 +29,7 @@ class LimiteInsereEstudantes(tk.Toplevel):
         self.frameButton.pack()
       
         self.labelNro = tk.Label(self.frameNro,text="Nro Matrícula: ")
-        self.labelNome = tk.Label(self.frameNome,text="Nome: ")
+        self.labelNome = tk.Label(self.frameNome,text="Nome:              ")
         self.labelNro.pack(side="left")
         self.labelNome.pack(side="left")  
 
@@ -38,15 +38,15 @@ class LimiteInsereEstudantes(tk.Toplevel):
         self.inputNome = tk.Entry(self.frameNome, width=20)
         self.inputNome.pack(side="left")             
       
-        self.buttonSubmit = tk.Button(self.frameButton ,text="Cadastrar")      
+        self.buttonSubmit = tk.Button(self.frameButton ,text="Cadastrar", font = ('Arial Black', 8))      
         self.buttonSubmit.pack(side="left")
         self.buttonSubmit.bind("<Button>", controle.cadastraHandler)
       
-        self.buttonClear = tk.Button(self.frameButton ,text="Clear")      
+        self.buttonClear = tk.Button(self.frameButton ,text="Clear", font = ('Arial Black', 8))      
         self.buttonClear.pack(side="left")
         self.buttonClear.bind("<Button>", controle.clearHandler)  
 
-        self.buttonFecha = tk.Button(self.frameButton ,text="Concluído")      
+        self.buttonFecha = tk.Button(self.frameButton ,text="Concluído", font = ('Arial Black', 8))      
         self.buttonFecha.pack(side="left")
         self.buttonFecha.bind("<Button>", controle.fechaHandler)
 
