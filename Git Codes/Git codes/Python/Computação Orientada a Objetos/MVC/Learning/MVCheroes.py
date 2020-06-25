@@ -69,7 +69,7 @@ class ViewPanel():
 class Controller():
     def __init__(self):
         self.root = tk.Tk()
-        self.root.geometry('250x100')
+        self.root.geometry('300x100')
         self.listaHerois = []
 
         self.view = View(self.root, self)

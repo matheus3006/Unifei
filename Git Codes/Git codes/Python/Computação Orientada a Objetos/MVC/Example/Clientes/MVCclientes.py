@@ -5,6 +5,13 @@ from tkinter import messagebox
 # V = View | Cria-se uma view principal, e outras views para cada janela diferente
 # C = Controller        
 
+#Exceptions de tratamento de email
+class UsernameDuplicado(Exception):
+    pass
+
+class EmailInvalido(Exception):
+    pass
+
 class ModelCliente():
     def __init__(self, nome, email):
         self.__nome = nome
@@ -84,10 +91,18 @@ class Controller():
         else:
             nomeCliente = self.view.viewPanel.inputText1.get()
             emailCliente = self.view.viewPanel.inputText2.get()
-            cliente = ModelCliente(nomeCliente, emailCliente)
-            self.listaClientes.append(cliente)
-            self.view.viewPanel.mostraJanela('Sucesso', 'Cliente cadastrado com sucesso')
-            self.clearHandler(event)
+            try:
+                emailPartes = emailCliente.split('@')
+                if len(emailPartes) != 2 or not emailPartes[1]:
+                    raise EmailInvalido()
+            except EmailInvalido:
+                self.view.viewPanel.mostraJanela('Falha', "'%s' nao é um endereço de email válido" % emailCliente)
+            
+            else:
+                cliente = ModelCliente(nomeCliente, emailCliente)
+                self.listaClientes.append(cliente)
+                self.view.viewPanel.mostraJanela('Sucesso', 'Cliente cadastrado com sucesso')
+                self.clearHandler(event)
 
     def clearHandler(self, event):
         self.view.viewPanel.inputText1.delete(0, len(self.view.viewPanel.inputText1.get()))

@@ -51,7 +51,7 @@ class Janela:
     def Enviar(self):
         self.correção = 'Sua resposta está '
 
-        if self.cbv2.get() == 1:
+        if self.cbv2.get() == 1 and self.cbv1.get() == 0 and self.cbv3.get() == 0 and self.cbv4.get() == 0:
             self.correção = self.correção + 'correta!\nProvavelmente você é um fã deste seriado...'
             messagebox.showinfo('Gabarito', self.correção)
         else:

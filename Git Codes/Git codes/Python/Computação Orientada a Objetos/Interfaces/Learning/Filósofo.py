@@ -9,6 +9,7 @@ class GUI:
         self.botão1 = tk.Button(self.janela, text = ('Nietzsche'), font = ('Arial black', 10), command = self.processaB1)
         self.botão2 = tk.Button(self.janela, text = (' Sócrates '), font = ('Arial black', 10), command = self.processaB2)
         self.botãoClear = tk.Button(self.janela, text = ('Limpar'), font = ('Arial black', 10), command = self.clear)
+        self.botaoSair = tk.Button(self.janela, text = 'Sair', font = ('Arial black', 10), command = self.sair)
 
         self.label = tk.Label(self.janela, text = ('Escolha um filósofo e receba uma citação...'), font = ('Arial', 13))
         self.space1 = tk.Label(self.janela, text = ('    '))
@@ -20,6 +21,7 @@ class GUI:
         self.label.pack()
         self.space2.pack()
         self.botãoClear.pack()
+        self.botaoSair.pack()
 
         tk.mainloop()
 
@@ -31,6 +33,9 @@ class GUI:
     
     def clear(self):
         self.label["text"] = "Escolha um filósofo e receba uma citação..."
+    
+    def sair(self):
+        self.janela.destroy()
     
 def main():
     GUI()

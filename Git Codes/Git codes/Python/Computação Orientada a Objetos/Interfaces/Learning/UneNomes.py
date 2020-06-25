@@ -13,9 +13,9 @@ class Formulario:
 
         self.explicaLabel = tk.Label(self.enunciado, text = ('Digite dois nomes para uní-los!'), font = ('Arial', 14))
         self.explicaLabel.pack()
-        self.inputLabel = tk.Label(self.entrada1, text = ('Digite um nome:'), font = ('Arial', 14))
+        self.inputLabel = tk.Label(self.entrada1, text = ('Digite um nome:     '), font = ('Arial', 12))
         self.inputLabel.pack(side = 'left')
-        self.inputLabel2 = tk.Label(self.entrada2, text = ('Digite outro nome:'), font = ('Arial', 14))
+        self.inputLabel2 = tk.Label(self.entrada2, text = ('Digite outro nome: '), font = ('Arial', 12))
         self.inputLabel2.pack(side = 'left')
         self.resultLabel = tk.Label(self.resultado, text = (' '), font = ('Arial black', 20))
         self.resultLabel.pack()

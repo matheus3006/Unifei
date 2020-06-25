@@ -7,7 +7,7 @@ class LimitePrincipal():
     def __init__(self, root, controle):
         self.controle = controle
         self.root = root
-        self.root.geometry('300x200')
+        self.root.geometry('300x100')
         self.menubar = tk.Menu(self.root)        
         self.estudanteMenu = tk.Menu(self.menubar)
         self.discipMenu = tk.Menu(self.menubar)
