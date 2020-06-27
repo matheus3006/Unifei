@@ -76,7 +76,6 @@ class CtrlEstudante():
             self.limiteLista = LimiteMostraEstudantes(str)
     
     def cadastraHandler(self, event):
-        
         if len(self.limiteInsc.inputNro.get()) == 0 or len(self.limiteInsc.inputNome.get()) == 0:
             self.limiteInsc.mostraJanela('Falha', 'Preencha todos os campos!')
         else:

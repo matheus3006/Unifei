@@ -100,9 +100,10 @@ class Controller():
             self.message = 'Não há heróis cadastrados'
             self.view.viewPanel.MostraMensagem('Lista de heróis\n', self.message)
         else:
+            str = 'Heróis cadastrados:\n'
             for hero in self.listaHerois:
-                self.message = hero.getNome() + ' - ' + hero.getIdentSecreta() + '\n' 
-            self.view.viewPanel.MostraMensagem('Lista de heróis\n', self.message)
+                str += hero.getNome() + ' - ' + hero.getIdentSecreta() + '\n'
+            self.view.viewPanel.MostraMensagem('Lista de heróis\n', str)
 
     def exitHandler(self, event):
         self.root.destroy()
