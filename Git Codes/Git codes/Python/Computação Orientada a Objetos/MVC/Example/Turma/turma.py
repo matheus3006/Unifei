@@ -59,7 +59,6 @@ class LimiteInsereTurma(tk.Toplevel):
         self.labelDiscip = tk.Label(self.frameDiscip,text="Escolha a disciplina: ")
         self.labelDiscip.pack(side="left")
         self.escolhaCombo = tk.StringVar()
-        self.escolhaCombo.set('Escolha')
         self.combobox = ttk.Combobox(self.frameDiscip, width = 15 , textvariable = self.escolhaCombo)
         self.combobox.pack(side="left")
         self.combobox['values'] = listaCodDiscip
@@ -129,11 +128,11 @@ class CtrlTurma():
         self.listaNroMatric = []
     
     def getTurma(self, codDisc):
-        trmRet = None
+        listatrmRet = []
         for trm in self.listaTurmas:
             if trm.getDisciplina().getCodigo() == codDisc:
-                trmRet = trm
-        return trmRet
+                listatrmRet.append(trm)
+        return listatrmRet
 
     def insereTurmas(self):        
         self.listaAlunosTurma = []
@@ -173,7 +172,6 @@ class CtrlTurma():
                 self.listaTurmas.append(turma)
                 self.limiteIns.mostraJanela('Inserção realizada', 'Turma criada com sucesso')
                 self.limiteIns.inputCodTurma.delete(0, len(self.limiteIns.inputCodTurma.get()))
-                self.limiteIns.escolhaCombo.set('Escolha')
             
     def insereAluno(self, event):
         try:
@@ -217,19 +215,21 @@ class CtrlTurma():
 
         else:
             Code = self.limiteCon.inputCode.get()
-            turma = self.getTurma(Code)
-            if turma == None:
+            listaTurmaPorCodigo = []
+            listaTurmaPorCodigo = self.getTurma(Code)
+            if len(listaTurmaPorCodigo) == 0:
                 str = ('Nenhuma turma possui uma disciplina com o código {}'.format(Code))
                 self.limiteCon.mostraJanela('Turma não encontrada', str)
                 self.limiteCon.inputCode.delete(0, len(self.limiteCon.inputCode.get()))
             else:
-                str = 'Informações das turmas com a disciplina consultada:\n'
-                str += 'Código: ' + turma.getCodigo() + '\n'
-                str += 'Disciplina: ' + turma.getDisciplina().getCodigo() +  ' - ' + turma.getDisciplina().getNome() + '\n'
-                str += 'Estudantes:\n'
-                for estud in turma.getEstudantes():
-                    str += estud.getNroMatric() + ' - ' + estud.getNome() + '\n'
-                str += '-----------------\n'
+                for trm in listaTurmaPorCodigo:
+                    str = 'Informações das turmas com a disciplina consultada:\n'
+                    str += 'Código: ' + trm.getCodigo() + '\n'
+                    str += 'Disciplina: ' + trm.getDisciplina().getCodigo() +  ' - ' + trm.getDisciplina().getNome() + '\n'
+                    str += 'Estudantes:\n'
+                    for estud in trm.getEstudantes():
+                        str += estud.getNroMatric() + ' - ' + estud.getNome() + '\n'
+                    str += '-----------------\n'
                 self.limiteCon.mostraJanela('Turma encontrada', str)
                 self.limiteCon.inputCode.delete(0, len(self.limiteCon.inputCode.get()))
     
