@@ -126,13 +126,6 @@ class CtrlTurma():
         self.listaAlunosTurma = []
 
         self.listaNroMatric = []
-    
-    def getTurma(self, codDisc):
-        listatrmRet = []
-        for trm in self.listaTurmas:
-            if trm.getDisciplina().getCodigo() == codDisc:
-                listatrmRet.append(trm)
-        return listatrmRet
 
     def insereTurmas(self):        
         self.listaAlunosTurma = []
@@ -216,7 +209,9 @@ class CtrlTurma():
         else:
             Code = self.limiteCon.inputCode.get()
             listaTurmaPorCodigo = []
-            listaTurmaPorCodigo = self.getTurma(Code)
+            for trm in self.listaTurmas:
+                if trm.getDisciplina().getCodigo() == Code:
+                    listaTurmaPorCodigo.append(trm)
             if len(listaTurmaPorCodigo) == 0:
                 str = ('Nenhuma turma possui uma disciplina com o código {}'.format(Code))
                 self.limiteCon.mostraJanela('Turma não encontrada', str)
