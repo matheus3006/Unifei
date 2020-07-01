@@ -217,8 +217,8 @@ class CtrlTurma():
                 self.limiteCon.mostraJanela('Turma não encontrada', str)
                 self.limiteCon.inputCode.delete(0, len(self.limiteCon.inputCode.get()))
             else:
+                str = 'Informações das turmas com a disciplina consultada:\n'
                 for trm in listaTurmaPorCodigo:
-                    str = 'Informações das turmas com a disciplina consultada:\n'
                     str += 'Código: ' + trm.getCodigo() + '\n'
                     str += 'Disciplina: ' + trm.getDisciplina().getCodigo() +  ' - ' + trm.getDisciplina().getNome() + '\n'
                     str += 'Estudantes:\n'
